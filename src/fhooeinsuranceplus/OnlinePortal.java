@@ -44,7 +44,8 @@ public class OnlinePortal extends HttpServlet {
 
 		String n = request.getParameter("user");
 
-
+		Database d = new Database();
+		d.authenticateUser(n);
 		out.println("Hallo" + n +"!");
 
 
