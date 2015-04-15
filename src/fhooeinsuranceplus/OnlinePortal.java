@@ -42,7 +42,7 @@ public class OnlinePortal extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		String n = request.getParameter("name");
+		String n = request.getParameter("user");
 
 
 		out.println("Hallo!" + n);
