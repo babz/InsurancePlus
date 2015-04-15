@@ -45,7 +45,7 @@ public class OnlinePortal extends HttpServlet {
 		String n = request.getParameter("user");
 
 
-		out.println("Hallo!" + n);
+		out.println("Hallo" + n +"!");
 
 
 	}
