@@ -1,10 +1,14 @@
+package fhooeinsuranceplus;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class OnlinePortal extends HttpServlet {
@@ -32,6 +36,21 @@ public class OnlinePortal extends HttpServlet {
 		out.close();
 	}
 
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	    throws IOException, ServletException {
+
+		PrintWriter out = response.getWriter();
+
+		String n = request.getParameter("name");
+
+
+		out.println("Hallo!" + n);
+
+
+	}
+
+	
 	public void destroy()
 	{
 		// do nothing.
