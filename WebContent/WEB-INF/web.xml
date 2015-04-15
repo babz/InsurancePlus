@@ -15,7 +15,7 @@
   
       <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>at.fhooe.plus.OnlinePortal</servlet-class>
+        <servlet-class>fhooeinsuranceplus.OnlinePortal</servlet-class>
     </servlet>
 
     <servlet-mapping>
