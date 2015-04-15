@@ -15,7 +15,7 @@
   
       <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>mypackage.OnlinePortal</servlet-class>
+        <servlet-class>at.fhooe.+.OnlinePortal</servlet-class>
     </servlet>
 
     <servlet-mapping>
