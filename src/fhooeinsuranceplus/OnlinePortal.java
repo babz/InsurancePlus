@@ -28,10 +28,10 @@ public class OnlinePortal extends HttpServlet {
 
 		out.println("<p>Welcome visitor!</p>");
 		out.println("<p>Please enter your name & password below:</p>");
-		out.println("<p><form action=\"hello\" method=\"post\">");
-		out.println("<p> Name: <input type=\"text\" name=\"name\"><br>");
+		out.println("<p><form action=\"login\" method=\"post\">");
+		out.println("<p> Name: <input type=\"text\" name=\"user\"><br>");
 		out.println("<p>Password: <input type=\"password\" name=\"password\"><br>");
-		out.println("<p><input type=\"submit\" value=\"Submit\">");
+		out.println("<p><input type=\"submit\" value=\"login\">");
 		out.println("<p></form> ");
 		out.close();
 	}
@@ -42,10 +42,10 @@ public class OnlinePortal extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		String n = request.getParameter("name");
+		String n = request.getParameter("user");
 
 
-		out.println("Hallo!" + n);
+		out.println("Hallo" + n +"!");
 
 
 	}
