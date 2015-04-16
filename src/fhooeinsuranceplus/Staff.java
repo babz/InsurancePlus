@@ -6,6 +6,7 @@ package fhooeinsuranceplus;
  * Role ( Agent | Admin | Controller )
  * ID
  * PW Hash
+ * username
  * 
  * @author Lukas
  *
@@ -27,6 +28,11 @@ public class Staff {
 	 * Cryptographically secure hash
 	 */
 	private String passwordHash;
+	
+	/**
+	 * Username (needed for authentication)
+	 */
+	private String username;
 
 	/**
 	 * @return the role
@@ -68,6 +74,20 @@ public class Staff {
 	 */
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
+	}
+
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	

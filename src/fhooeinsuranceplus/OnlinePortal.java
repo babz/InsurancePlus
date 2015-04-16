@@ -44,13 +44,13 @@ public class OnlinePortal extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String user = request.getParameter("user");
-		String password = request.getParameter("pass");
+		String password = request.getParameter("password");
 
 
 		Database d = new Database();
 		out.println("Hallo " + user +"!");
 
-		out.println("Autenticated:  " + d.authenticateUser(user, password) +"!");
+		out.println("Autenticated:  " + d.authenticateUser(user, password.toCharArray()) +"!");
 		
 
 

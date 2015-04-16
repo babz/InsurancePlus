@@ -23,7 +23,7 @@ public class PasswordUtil {
 	 * @throws UnsupportedEncodingException
 	 */
 	public String savePassword(char[] password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		MessageDigest messagedigest = MessageDigest.getInstance("SHA-2");
+		MessageDigest messagedigest = MessageDigest.getInstance("SHA-256");
 		messagedigest.reset();
 		
 		ByteBuffer passwordToByte = Charset.forName("UTF-8").encode(CharBuffer.wrap(password));
