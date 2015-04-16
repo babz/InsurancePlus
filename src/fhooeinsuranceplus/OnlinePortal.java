@@ -17,6 +17,7 @@ public class OnlinePortal extends HttpServlet {
 
 	public void init() throws ServletException
 	{
+		Database.init();
 		// Do required initialization
 	}
 
@@ -42,12 +43,14 @@ public class OnlinePortal extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		String n = request.getParameter("user");
+		String user = request.getParameter("user");
+		String password = request.getParameter("pass");
+
 
 		Database d = new Database();
-		out.println("Hallo " + n +"!");
+		out.println("Hallo " + user +"!");
 
-		out.println("Autenticated:  " + d.authenticateUser(n) +"!");
+		out.println("Autenticated:  " + d.authenticateUser(user, password) +"!");
 		
 
 

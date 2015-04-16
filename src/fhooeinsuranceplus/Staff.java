@@ -24,7 +24,7 @@ public class Staff {
 	private int id;
 	
 	/**
-	 * Cryptographically secure hasj
+	 * Cryptographically secure hash
 	 */
 	private String passwordHash;
 
