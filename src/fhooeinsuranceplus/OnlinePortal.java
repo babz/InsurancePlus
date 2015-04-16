@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+
 
 
 public class OnlinePortal extends HttpServlet {
@@ -40,7 +42,10 @@ public class OnlinePortal extends HttpServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
-
+		PrintWriter out = response.getWriter();
+		//set page color
+		String pageColor = "lightgrey";
+		out.println("<body bgcolor=\""+pageColor+"\">");
 
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
@@ -63,15 +68,23 @@ public class OnlinePortal extends HttpServlet {
 		// authenticating
 		Staff staffmember = d.authenticateUser(user, password.toCharArray());
 		
+		//printing costumers
+		String html ="";
 		if (staffmember != null) {
-			PrintWriter out = response.getWriter();
-			String 
-			response.setContentType("text/html");
-			String html = "<html><head><itle>Agent</title></head>\n";
-			html += "<body>\n";
-			html += "<h1>Dear "+staffmember+"! </h1>\n";
-			html += "<p>In the following you can see your costumers </p>\n\n";
 			
+			response.setContentType("text/html");
+			html = "<html><head><itle>Login as "+staffmember.getUsername() +"</title></head>\n";
+			html += "<body>\n";
+			html += "<h1>Dear "+staffmember.getUsername()+"! </h1>\n";
+			html += "<p>In the following you can see your costumers: </p>\n\n";
+			CustomerDatabase dt = new CustomerDatabase();
+			
+			List<Customer> customerlist = dt.getListOfCustomers(staffmember);
+			 for (Customer c : customerlist) {
+				html += "<p>" +c.getFirstName() + " " +c.getSurname() +"<a href =\"UserDatabase.java\"> More Information"+"</a></p>";
+				html += "\n\n";
+			 }
+			 
 			html += "</body></html>\n";
 			out.println(html);
 			
@@ -80,6 +93,7 @@ public class OnlinePortal extends HttpServlet {
 			out.println("Password Hash: " + staffmember.getPasswordHash());
 			out.println("ID: " + staffmember.getId());
 			out.println("Role: " + staffmember.getRole());*/
+			
 			out.close();
 		} else {
 			response.sendRedirect("loginFailed.html");
