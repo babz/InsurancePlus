@@ -11,6 +11,7 @@ public class Database {
 	PasswordUtil p = new PasswordUtil();
 
 	public boolean authenticateUser(String username, char[] password) {
+		System.out.println("[Authentication of user \""+username+"\"]");
 		boolean authenticated = false;
 		Staff s = null;
 		
@@ -31,13 +32,12 @@ public class Database {
 		}
 
 		if (s == null) {
-			System.out.println("Authentication failed!");
+			System.out.println(" -> Authentication failed!");
 			String wrongPW = new String(password);
-			System.out.println("["+username+"]["+wrongPW+"]");
 			
 			return false;
 		} else {
-			System.out.println(" User " + s.getId()
+			System.out.println(" -> User " + s.getId()
 					+ " authenticated with role " + s.getRole().toString());
 			return true;
 		}

@@ -103,3 +103,11 @@ body {
   text-align: center;
   font-size: 12px;
 }
+
+.login-error {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: red;
+}

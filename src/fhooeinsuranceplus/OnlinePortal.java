@@ -23,36 +23,49 @@ public class OnlinePortal extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		PrintWriter out = response.getWriter();
 
-		out.println("hallo");
+		// a GET Request is not allowed in this place...
+		response.sendRedirect("index.html");
 
-		out.println("<p>Welcome visitor!</p>");
-		out.println("<p>Please enter your name & password below:</p>");
-		out.println("<p><form action=\"login\" method=\"post\">");
-		out.println("<p> Name: <input type=\"text\" name=\"user\"><br>");
-		out.println("<p>Password: <input type=\"password\" name=\"password\"><br>");
-		out.println("<p><input type=\"submit\" value=\"login\">");
-		out.println("<p></form> ");
-		out.close();
 	}
 
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
 
-		PrintWriter out = response.getWriter();
 
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
-
-
-		Database d = new Database();
-		out.println("Hallo " + user +"!");
-
-		out.println("Autenticated:  " + d.authenticateUser(user, password.toCharArray()) +"!");
 		
+		
+		if (user==null || user.equals("")){
+			System.out.println("Username field is empty");
+			response.sendRedirect("loginFailed.html");
+			return;
+		}
+		if (password == null || password.equals("")){
+			System.out.println("Password field is empty");
+			response.sendRedirect("loginFailed.html");
+			return;
+		}
 
+		// User Management System
+		Database d = new Database();
+
+		// authenticating
+		boolean auth = d.authenticateUser(user, password.toCharArray());
+		
+		if (auth) {
+			PrintWriter out = response.getWriter();
+
+			out.println("Login successful.");
+			out.close();
+		} else {
+			response.sendRedirect("loginFailed.html");
+			return;
+			
+		}
+		
 
 	}
 
