@@ -1,5 +1,6 @@
 package fhooeinsuranceplus;
 
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -13,7 +14,6 @@ import java.util.Date;
 public class Customer {
 	private String firstName;
 	private String surname;
-	private Date dateOfBirth;
 	private long insuranceSum;
 	/**
 	 * @return the firstName
@@ -39,18 +39,7 @@ public class Customer {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-	/**
-	 * @return the dateOfBirth
-	 */
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-	/**
-	 * @param dateOfBirth the dateOfBirth to set
-	 */
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
+	
 	/**
 	 * @return the insuranceSum
 	 */
