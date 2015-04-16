@@ -81,7 +81,7 @@ public class OnlinePortal extends HttpServlet {
 			
 			List<Customer> customerlist = dt.getListOfCustomers(staffmember);
 			 for (Customer c : customerlist) {
-				html += "<p>" +c.getFirstName() + " " +c.getSurname() +"<a href ="response.sendRedirect("loginFailed.html")+"> More Information"+"</a></p>";
+				html += "<p>" +c.getFirstName() + " " +c.getSurname() +"<a href =\"customer.jsp\"> More Information"+"</a></p>";
 			 }
 			 
 			html += "</body></html>\n";
