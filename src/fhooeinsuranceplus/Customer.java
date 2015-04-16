@@ -11,7 +11,7 @@ import java.util.Date;
  * @author Lukas
  *
  */
-public class Customer {
+public class Customer implements java.io.Serializable {
 	private String firstName;
 	private String surname;
 	private long insuranceSum;

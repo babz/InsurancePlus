@@ -33,7 +33,6 @@ public class UserDatabase {
 
 		if (s == null) {
 			System.out.println(" -> Authentication failed!");
-			String wrongPW = new String(password);
 			
 			return null;
 		} else {
