@@ -65,12 +65,21 @@ public class OnlinePortal extends HttpServlet {
 		
 		if (staffmember != null) {
 			PrintWriter out = response.getWriter();
-
-			out.println("Login successful.");
+			String 
+			response.setContentType("text/html");
+			String html = "<html><head><itle>Agent</title></head>\n";
+			html += "<body>\n";
+			html += "<h1>Dear "+staffmember+"! </h1>\n";
+			html += "<p>In the following you can see your costumers </p>\n\n";
+			
+			html += "</body></html>\n";
+			out.println(html);
+			
+			/*out.println("Login successful.");
 			out.println("Username: " + staffmember.getUsername());
 			out.println("Password Hash: " + staffmember.getPasswordHash());
 			out.println("ID: " + staffmember.getId());
-			out.println("Role: " + staffmember.getRole());
+			out.println("Role: " + staffmember.getRole());*/
 			out.close();
 		} else {
 			response.sendRedirect("loginFailed.html");
