@@ -5,12 +5,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Database {
+public class UserDatabase {
 
 	static List<Staff> listOfStaff = new ArrayList<Staff>();
 	PasswordUtil p = new PasswordUtil();
 
-	public boolean authenticateUser(String username, char[] password) {
+	public Staff authenticateUser(String username, char[] password) {
 		System.out.println("[Authentication of user \""+username+"\"]");
 		boolean authenticated = false;
 		Staff s = null;
@@ -35,11 +35,11 @@ public class Database {
 			System.out.println(" -> Authentication failed!");
 			String wrongPW = new String(password);
 			
-			return false;
+			return null;
 		} else {
 			System.out.println(" -> User " + s.getId()
 					+ " authenticated with role " + s.getRole().toString());
-			return true;
+			return s;
 		}
 	}
 

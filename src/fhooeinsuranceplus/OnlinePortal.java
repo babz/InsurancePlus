@@ -17,7 +17,7 @@ public class OnlinePortal extends HttpServlet {
 
 	public void init() throws ServletException
 	{
-		Database.init();
+		UserDatabase.init();
 		// Do required initialization
 	}
 
@@ -50,15 +50,19 @@ public class OnlinePortal extends HttpServlet {
 		}
 
 		// User Management System
-		Database d = new Database();
+		UserDatabase d = new UserDatabase();
 
 		// authenticating
-		boolean auth = d.authenticateUser(user, password.toCharArray());
+		Staff staffmember = d.authenticateUser(user, password.toCharArray());
 		
-		if (auth) {
+		if (staffmember != null) {
 			PrintWriter out = response.getWriter();
 
 			out.println("Login successful.");
+			out.println("Username: " + staffmember.getUsername());
+			out.println("Password Hash: " + staffmember.getPasswordHash());
+			out.println("ID: " + staffmember.getId());
+			out.println("Role: " + staffmember.getRole());
 			out.close();
 		} else {
 			response.sendRedirect("loginFailed.html");
