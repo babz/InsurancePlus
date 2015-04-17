@@ -1,6 +1,5 @@
 package fhooeinsuranceplus;
 
-import java.util.Calendar;
 import java.util.Date;
 
 
@@ -12,6 +11,10 @@ import java.util.Date;
  *
  */
 public class Customer implements java.io.Serializable {
+	/**
+	 * 
+	 */
+  private static final long serialVersionUID = 1L;
 	private String firstName;
 	private String surname;
 	private long insuranceSum;
