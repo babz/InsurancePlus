@@ -31,41 +31,52 @@
 		<servlet-name>ProfileServlet</servlet-name>
 		<servlet-class>fhooeinsuranceplus.ProfileServlet</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>ProfileServlet</servlet-name>
 		<url-pattern>/ProfileServlet</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<display-name>CustomerInfo</display-name>
 		<servlet-name>CustomerInfo</servlet-name>
 		<servlet-class>fhooeinsuranceplus.CustomerInfo</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>CustomerInfo</servlet-name>
 		<url-pattern>/CustomerInfo</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
+		<display-name>ShowCust</display-name>
+		<servlet-name>ShowCust</servlet-name>
+		<servlet-class>fhooeinsuranceplus.ShowCust</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ShowCust</servlet-name>
+		<url-pattern>/ShowCust</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<display-name>Download</display-name>
 		<servlet-name>Download</servlet-name>
 		<servlet-class>fhooeinsuranceplus.Download</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>Download</servlet-name>
 		<url-pattern>/Download</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
-	<description>Logout</description>
-	<display-name>LogoutServlet</display-name>
-	<servlet-name>LogoutServlet</servlet-name>
-	<servlet-class>fhooeinsuranceplus.LogoutServlet</servlet-class>
-</servlet>
+		<description>Logout</description>
+		<display-name>LogoutServlet</display-name>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>fhooeinsuranceplus.LogoutServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>

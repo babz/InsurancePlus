@@ -80,13 +80,15 @@ public class OnlinePortal extends HttpServlet {
 			//Session
 			HttpSession session = request.getSession();
 			session.setAttribute("user", username);
+		 
 			
 			response.setContentType("text/html");
 			html = "<html><head><itle>Login as " + username
 			    + "</title></head>\n";
 			html += "<body>\n";
 			html += "<h1>Dear " + staffmember.getUsername() + "! </h1>\n";
-			html += "<p>In the following you can see your costumers: </p>\n\n";
+			html += "<p>Welcome to your InsurancePlus Profile. Manage your Data! </p>";
+			html += "Your costumers: </p>";
 			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" bgcolor=\"grey\">\n<tr><th> Customer name </th> <th> More information </th> </tr>";
 			
 			CustomerDatabase dt = new CustomerDatabase();
