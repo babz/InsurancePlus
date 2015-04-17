@@ -50,17 +50,6 @@
 	</servlet-mapping>
 
 	<servlet>
-		<display-name>ShowCust</display-name>
-		<servlet-name>ShowCust</servlet-name>
-		<servlet-class>fhooeinsuranceplus.ShowCust</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>ShowCust</servlet-name>
-		<url-pattern>/ShowCust</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
 		<display-name>Download</display-name>
 		<servlet-name>Download</servlet-name>
 		<servlet-class>fhooeinsuranceplus.Download</servlet-class>
