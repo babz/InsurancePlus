@@ -49,6 +49,17 @@
 		<url-pattern>/CustomerInfo</url-pattern>
 	</servlet-mapping>
 	
+		<servlet>
+		<display-name>Download</display-name>
+		<servlet-name>Download</servlet-name>
+		<servlet-class>fhooeinsuranceplus.Download</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Download</servlet-name>
+		<url-pattern>/Download</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 	<description>Logout</description>
 	<display-name>LogoutServlet</display-name>

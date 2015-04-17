@@ -22,11 +22,13 @@ HttpSession session=request.getSession(false);
 if(session!=null){  
 String name=(String)session.getAttribute("user");  
 
-out.print("Hello, "+name+" - Customer Information for ..!!"); 
+out.print("Hello, "+name+" - Customer Information for ..!!<br><br>"); 
 
+String insinfo = "<p> Firstname: " + "<br>Surname: "+"<br>InsuranceSum: "+"</p>";
 
+out.print(insinfo);
 
-
+out.print("<a href =\"Download\"> Download Customer Information" + "</a>");
 
 }  
 else{  
