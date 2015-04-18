@@ -1,7 +1,5 @@
 package fhooeinsuranceplus;
 
-import java.util.Date;
-
 
 /**
  * Class Customer: Store everything we want to keep about our cusomers.
