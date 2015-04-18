@@ -15,6 +15,26 @@ public class CustomerDatabase {
 		return listOfCustomers;
 
 	}
+	
+	/**
+	 * Returns a Customer-Object if the customer with the chosen ID exists; otherwise null.
+	 * @param id Customer ID (greater than 0)
+	 * @return Customer Object or null
+	 */
+	public Customer getCustomerById(int id){
+		if (id <= 0) {
+			return null;
+		} 
+		
+		for (Customer c : listOfCustomers) {
+			if (c.getCustromerId()==id){
+				return c;
+			}
+		}
+		
+		return null;
+		
+	}
 
 	public void addCustomer(Staff s, Customer c) {
 		if (s.getRole().equals(StaffRole.AGENT)) {
@@ -39,24 +59,28 @@ public class CustomerDatabase {
 		System.out.println("[init] Customer Data");
 
 		Customer c1 = new Customer();
+		c1.setCustromerId(1);
 		c1.setFirstName("Hans");
 		c1.setSurname("Huber");
 		c1.setInsuranceSum(1000);
 		listOfCustomers.add(c1);
 		
 		Customer c2 = new Customer();
+		c2.setCustromerId(2);
 		c2.setFirstName("Heidi");
 		c2.setSurname("Meier");
 		c2.setInsuranceSum(7450);
 		listOfCustomers.add(c2);
 		
 		Customer c3 = new Customer();
+		c3.setCustromerId(3);
 		c3.setFirstName("Johannes");
 		c3.setSurname("Hotz-Plotz");
 		c3.setInsuranceSum(15);
 		listOfCustomers.add(c3);
 		
 		Customer c4 = new Customer();
+		c4.setCustromerId(4);
 		c4.setFirstName("DDr. Jörg");
 		c4.setSurname("Gemeinreich");
 		c4.setInsuranceSum(1200000);

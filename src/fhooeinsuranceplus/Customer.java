@@ -13,9 +13,11 @@ public class Customer implements java.io.Serializable {
 	 * 
 	 */
   private static final long serialVersionUID = 1L;
+    private int custromerId;
 	private String firstName;
 	private String surname;
 	private long insuranceSum;
+	
 	/**
 	 * @return the firstName
 	 */
@@ -52,6 +54,18 @@ public class Customer implements java.io.Serializable {
 	 */
 	public void setInsuranceSum(long insuranceSum) {
 		this.insuranceSum = insuranceSum;
+	}
+	/**
+	 * @return the custromerId
+	 */
+	public int getCustromerId() {
+		return custromerId;
+	}
+	/**
+	 * @param custromerId the custromerId to set
+	 */
+	public void setCustromerId(int custromerId) {
+		this.custromerId = custromerId;
 	}
 	
 

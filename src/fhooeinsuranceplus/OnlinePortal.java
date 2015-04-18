@@ -89,14 +89,14 @@ public class OnlinePortal extends HttpServlet {
 			html += "<h1>Dear " + staffmember.getUsername() + "! </h1>\n";
 			html += "<p>Welcome to your InsurancePlus Profile. Manage your Data! </p>";
 			html += "Your costumers: </p>";
-			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" bgcolor=\"grey\">\n<tr><th> Customer name </th> <th> More information </th> </tr>";
+			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" bgcolor=\"grey\">\n<tr><th>ID</th><th> Customer name </th> <th> More information </th> </tr>";
 			
 			CustomerDatabase dt = new CustomerDatabase();
 			List<Customer> customerlist = dt.getListOfCustomers(staffmember);
 			for (Customer c : customerlist) {
 
-				html += "<tr><td>" + c.getFirstName() + " " + c.getSurname()
-				    + "</td> <td><a href =\"CustomerInfo\"> More Information" + "</a></td></tr>";
+				html += "<tr><td>"+ c.getCustromerId() + "</td><td>" + c.getFirstName() + " " + c.getSurname()
+				    + "</td> <td><a href =\"CustomerInfo?id=" + c.getCustromerId() + "\"> More Information" + "</a></td></tr>";
 			}
 			html += "</table>";
 			html += "</body></html>\n";
