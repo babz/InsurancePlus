@@ -37,6 +37,18 @@
 		<url-pattern>/ProfileServlet</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<display-name>ShowCustomer</display-name>
+		<servlet-name>ShowCustomer</servlet-name>
+		<servlet-class>fhooeinsuranceplus.ShowCustomer</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ShowCustomer</servlet-name>
+		<url-pattern>/ShowCustomer</url-pattern>
+	</servlet-mapping>
+
+
 
 	<servlet>
 		<display-name>CustomerInfo</display-name>
