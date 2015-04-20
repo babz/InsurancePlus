@@ -16,8 +16,9 @@ public class CustomerInfo extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		request.getRequestDispatcher("link.html").include(request, response);
-		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\">");
+		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\"></link>");
 
+		out.println("<div class=\"main-card\">");
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 
@@ -73,6 +74,7 @@ public class CustomerInfo extends HttpServlet {
 			request.getRequestDispatcher("index.html").include(request,
 					response);
 		}
+		out.println("</div>");
 		out.close();
 	}
 }

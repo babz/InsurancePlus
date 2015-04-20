@@ -83,13 +83,13 @@ public class OnlinePortal extends HttpServlet {
 		 
 			
 			response.setContentType("text/html");
-			html = "<html><head><itle>Login as " + username
-			    + "</title></head>\n";
-			html += "<body>\n";
+			html="<div class=\"main-card\">";
+			//html = "<body>\n<title>Login as " + username
+		//	    + "</title>\n";
 			html += "<h1>Dear " + staffmember.getUsername() + "! </h1>\n";
 			html += "<p>Welcome to your InsurancePlus Profile. Manage your Data! </p>";
 			html += "Your costumers: </p>";
-			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" bgcolor=\"grey\">\n<tr><th>ID</th><th> Customer name </th> <th> More information </th> </tr>";
+			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" >\n<tr><th>ID</th><th> Customer name </th> <th> More information </th> </tr>";
 			
 			CustomerDatabase dt = new CustomerDatabase();
 			List<Customer> customerlist = dt.getListOfCustomers(staffmember);
@@ -98,7 +98,7 @@ public class OnlinePortal extends HttpServlet {
 				html += "<tr><td>"+ c.getCustromerId() + "</td><td>" + c.getFirstName() + " " + c.getSurname()
 				    + "</td> <td><a href =\"CustomerInfo?id=" + c.getCustromerId() + "\"> More Information" + "</a></td></tr>";
 			}
-			html += "</table>";
+			html += "</table></div>";
 			html += "</body></html>\n";
 			out.println(html);
 

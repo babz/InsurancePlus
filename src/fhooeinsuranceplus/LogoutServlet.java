@@ -23,7 +23,7 @@ public class LogoutServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		request.getRequestDispatcher("link.html").include(request, response);
-		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\">");
+		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\"></link>");
 
 		HttpSession session = request.getSession();
 		session.invalidate();
