@@ -40,12 +40,14 @@ String html ="";
 			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" >\n<tr><th>ID</th><th> Customer name </th> <th> More information </th> </tr>";
 			
 			CustomerDatabase dt = new CustomerDatabase();
-			/*List<Customer> customerlist = dt.getListOfCustomers(staffmember);
+			Staff s = (Staff) session.getAttribute("role");
+
+			List<Customer> customerlist = dt.getListOfCustomers(s);
 			for (Customer c : customerlist) {
 
 				html += "<tr><td>"+ c.getCustromerId() + "</td><td>" + c.getFirstName() + " " + c.getSurname()
 				    + "</td> <td><a href =\"CustomerInfo?id=" + c.getCustromerId() + "\"> More Information" + "</a></td></tr>";
-			}*/
+			}
 			html += "</table></div>";
 			html += "</body></html>\n";
 			out.println(html);

@@ -81,6 +81,7 @@ public class OnlinePortal extends HttpServlet {
 		String username = staffmember.getUsername();
 		HttpSession session = request.getSession();
 		session.setAttribute("user", username);
+		session.setAttribute("role", staffmember);
 		session.setMaxInactiveInterval(60 * 15);
 		String newRandom="";
 		
@@ -100,45 +101,15 @@ public class OnlinePortal extends HttpServlet {
 			session.setAttribute("user", username);
 		}
 
+		
+		
 		// printing costumers
-		String html = "";
 		if (staffmember != null) {
-
-			response.setContentType("text/html");
-			html = "<div class=\"main-card\">";
-			// html = "<body>\n<title>Login as " + username
-			// + "</title>\n";
-			html += "<h1>Dear " + staffmember.getUsername() + "! </h1>\n";
-			html += "<p>Welcome to your InsurancePlus Profile. Manage your Data! </p>";
-			html += "Your costumers: </p>";
-			html += "<table border= \"2\" cellspacing=\"10\" cellpadding=\"10\" >\n<tr><th>ID</th><th> Customer name </th> <th> More information </th> </tr>";
-
-			CustomerDatabase dt = new CustomerDatabase();
-			List<Customer> customerlist = dt.getListOfCustomers(staffmember);
-			for (Customer c : customerlist) {
-
-				html += "<tr><td>" + c.getCustromerId() + "</td><td>"
-				    + c.getFirstName() + " " + c.getSurname()
-				    + "</td> <td><a href =\"CustomerInfo?id=" + c.getCustromerId()
-				    + "\"> More Information" + "</a></td></tr>";
-			}
-			html += "</table></div>";
-			html += "</body></html>\n";
-			out.println(html);
-
-			/*
-			 * out.println("Login successful."); out.println("Username: " +
-			 * staffmember.getUsername()); out.println("Password Hash: " +
-			 * staffmember.getPasswordHash()); out.println("ID: " +
-			 * staffmember.getId()); out.println("Role: " + staffmember.getRole());
-			 */
-
-			out.close();
+			response.sendRedirect("ShowCustomer");
 		} else {
 			response.sendRedirect("loginFailed.html");
-			return;
-
 		}
+		return;
 
 	}
 
