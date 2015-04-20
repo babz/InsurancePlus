@@ -68,8 +68,13 @@ public class OnlinePortal extends HttpServlet {
 			response.sendRedirect("loginFailed.html");
 			return;
 		}
-
-		boolean rememberMe = Boolean.valueOf(request.getParameter("rememberme"));
+		
+		
+		boolean rememberMe = false;
+		if (request.getParameter("rememberme") != null );{
+			rememberMe = true;
+			System.out.println("Remember function is active");
+		}
 
 		// User Management System
 		UserDatabase d = new UserDatabase();
@@ -96,7 +101,7 @@ public class OnlinePortal extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Cookie loginCookie = new Cookie("rememberme", username + ";" + newRandom);
+			Cookie loginCookie = new Cookie("rememberme", username + ":" + newRandom);
 			response.addCookie(loginCookie);
 			session.setAttribute("user", username);
 		}
