@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 public class Download extends HttpServlet{
 	/**
 	 * Nachfolgend ist das Compliant Beispiel für den File-Download ersichtlich.
@@ -19,6 +21,10 @@ public class Download extends HttpServlet{
 	 * Underscore bestehen.
 	 * @author christina
 	 */
+	
+	static Logger log = Logger.getLogger(Download.class.getName());
+
+	
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -5,7 +5,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class UserDatabase {
+	
+	static Logger log = Logger.getLogger(UserDatabase.class.getName());
+
+	
 
 	static List<Staff> listOfStaff = new ArrayList<Staff>();
 	PasswordUtil p = new PasswordUtil();
@@ -25,8 +31,10 @@ public class UserDatabase {
 					}
 				} catch (NoSuchAlgorithmException e) {
 					e.printStackTrace();
+					log.info("Exception No such Algorithm");
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
+					log.info("Exception Unsupported Encoding");
 				}
 			} 
 		}
