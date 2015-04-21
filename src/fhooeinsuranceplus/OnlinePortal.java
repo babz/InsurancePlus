@@ -65,11 +65,13 @@ public class OnlinePortal extends HttpServlet {
 		if (user == null || user.equals("")) {
 			System.out.println("Username field is empty");
 			response.sendRedirect("loginFailed.html");
+			log.info("Login failed Username field is empty");
 			return;
 		}
 		if (password == null || password.equals("")) {
 			System.out.println("Password field is empty");
 			response.sendRedirect("loginFailed.html");
+			log.info("Login failed Password field is empty");
 			return;
 		}
 		
@@ -104,6 +106,7 @@ public class OnlinePortal extends HttpServlet {
 			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				log.info("Exception - No such Algorithm ");
 			}
 			Cookie loginCookie = new Cookie("rememberme", username + ":" + newRandom);
 			response.addCookie(loginCookie);
@@ -117,6 +120,7 @@ public class OnlinePortal extends HttpServlet {
 			response.sendRedirect("ShowCustomer");
 		} else {
 			response.sendRedirect("loginFailed.html");
+			log.info("Login Failed ");
 		}
 		return;
 
