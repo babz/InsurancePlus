@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class OnlinePortal extends HttpServlet {
 	
-	
+	static Logger log = Logger.getLogger(OnlinePortal.class.getName());
 	private static final long serialVersionUID = 1L;
 	private CustomerDatabase d = new CustomerDatabase();
 
