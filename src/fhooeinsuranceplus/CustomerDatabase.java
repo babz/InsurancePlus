@@ -3,7 +3,11 @@ package fhooeinsuranceplus;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 public class CustomerDatabase {
+	static Logger log = Logger.getLogger(CustomerDatabase.class.getName());
+	
 
 	private static List<Customer> listOfCustomers = new ArrayList<Customer>();
 
@@ -41,6 +45,7 @@ public class CustomerDatabase {
 			listOfCustomers.add(c);
 		} else {
 			System.out.println("[forbidden]");
+			log.info("Add Customer forbidden");
 
 		}
 
