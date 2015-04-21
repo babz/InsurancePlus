@@ -1,6 +1,7 @@
 package fhooeinsuranceplus;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 
 import javax.servlet.ServletConfig;
@@ -15,7 +16,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class OnlinePortal extends HttpServlet {
-
+	
+	
 	private static final long serialVersionUID = 1L;
 	private CustomerDatabase d = new CustomerDatabase();
 
