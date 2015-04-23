@@ -16,6 +16,16 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>secure login</web-resource-name>
+        <url-pattern>/index.html</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+	</security-constraint>
+
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>fhooeinsuranceplus.OnlinePortal</servlet-class>
