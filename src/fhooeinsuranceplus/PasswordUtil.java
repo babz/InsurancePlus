@@ -21,6 +21,7 @@ public class PasswordUtil {
 	 * @return das gehashte Passwort
 	 * @throws NoSuchAlgorithmException
 	 * @throws UnsupportedEncodingException
+	 *  author: stefanie
 	 */
 	public String savePassword(char[] password) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		MessageDigest messagedigest = MessageDigest.getInstance("SHA-256");

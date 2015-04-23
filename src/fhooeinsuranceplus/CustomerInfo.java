@@ -9,8 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 public class CustomerInfo extends HttpServlet {
 
+	static Logger log = Logger.getLogger(CustomerInfo.class.getName());
+	
+	
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -26,6 +31,8 @@ public class CustomerInfo extends HttpServlet {
 			if (request.getParameter("id") == null) {
 				out.print("No ID specified (1)");
 				out.close();
+				
+				log.info("No ID specified");
 				return;
 			}
 			
@@ -39,6 +46,7 @@ public class CustomerInfo extends HttpServlet {
 				out.print("No ID specified (2)");
 				out.close();
 				System.out.println(e.getMessage());
+				log.info("Number Format Exception");
 				return;
 			}
 
@@ -49,6 +57,7 @@ public class CustomerInfo extends HttpServlet {
 			if (c == null){
 				out.print("Customer with selected ID not found");
 				out.close();
+				log.info("Customer with selected ID not found");
 				return;
 			}
 			
