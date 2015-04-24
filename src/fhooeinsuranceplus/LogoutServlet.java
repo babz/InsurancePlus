@@ -18,6 +18,9 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Die Sesseion wird invalidiert und die Meldung Your are uccessfully logged out wird angezeigt
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 		response.setContentType("text/html");

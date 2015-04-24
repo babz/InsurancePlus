@@ -15,14 +15,22 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 
+
+/**
+ * Login-Funktionalität; Authentifizierung; wenn login korrekt -> weiterleitung zur ShowCustomer.java, wo die Customer
+ * des Agent's aufgelistet werden.
+ */
 public class OnlinePortal extends HttpServlet {
 	
 	static Logger log = Logger.getLogger(OnlinePortal.class.getName());
 	private static final long serialVersionUID = 1L;
-	private CustomerDatabase d = new CustomerDatabase();
 
+
+	/**
+	 * 
+	 * Initialisierung der User und Customerdatenbank
+	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		System.out
@@ -31,25 +39,19 @@ public class OnlinePortal extends HttpServlet {
 		CustomerDatabase.init();
 		System.out
 		    .println("#################################################################################################");
-
-		// Do required initialization
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
 		// a GET Request is not allowed in this place...
 		response.sendRedirect("index.html");
-
 	}
 
-	/*
-	 * - Bgcolor setzen - checks inputfields - Create Session! - List customers
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest
-	 * , javax.servlet.http.HttpServletResponse)
-	 */
+/**
+ * In dieser Methode wird überprüft ob das Feld für Username und Passwor leer sind. 
+ * Der User wird authentifziert.
+ * Es wird eine Session erstellt. Es wird ein Cookie erstellt - rememberme Funktion
+ */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
 		PrintWriter out = response.getWriter();
@@ -110,10 +112,9 @@ public class OnlinePortal extends HttpServlet {
 			}
 			Cookie loginCookie = new Cookie("rememberme", username + ":" + newRandom);
 			response.addCookie(loginCookie);
-			session.setAttribute("user", username);
+	
 		}
 
-		
 		
 		// printing costumers
 		if (staffmember != null) {
