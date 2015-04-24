@@ -8,15 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/**
+ * In this class the agent can have a look at his/her profile.
+ * 
+ * @author christina
+ * 
+ */
 public class ProfileServlet extends HttpServlet {
-	/**
-	 * In this class the agent can have a look at his/her profile.
-	 * 
-	 * @author christina
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Provides user information
+	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");

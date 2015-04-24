@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
+/**
+ * Customer database
+ */
 public class CustomerDatabase {
 	static Logger log = Logger.getLogger(CustomerDatabase.class.getName());
 	

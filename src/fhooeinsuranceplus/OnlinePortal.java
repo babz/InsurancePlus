@@ -1,9 +1,7 @@
 package fhooeinsuranceplus;
 
 import java.io.IOException;
-
 import java.io.PrintWriter;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -11,25 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
-
 import java.security.NoSuchAlgorithmException;
 
-
 /**
- * Login-Funktionalität; Authentifizierung; wenn login korrekt -> weiterleitung zur ShowCustomer.java, wo die Customer
- * des Agent's aufgelistet werden.
+ * In dieser Klasse werden folgende Funktionalitäten implementiert: --
+ * Login-Funktionalität; - Authentifizierung; wenn login korrekt ->
+ * weiterleitung zur ShowCustomer.java, wo die Customer des Agent's aufgelistet
+ * werden. -- Logging Funktionalität
  */
 public class OnlinePortal extends HttpServlet {
-	
+
+	// Logging
 	static Logger log = Logger.getLogger(OnlinePortal.class.getName());
 	private static final long serialVersionUID = 1L;
 
-
 	/**
-	 * 
-	 * Initialisierung der User und Customerdatenbank
+	 * Initialisierung der User- und Customerdatenbank
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -47,11 +43,12 @@ public class OnlinePortal extends HttpServlet {
 		response.sendRedirect("index.html");
 	}
 
-/**
- * In dieser Methode wird überprüft ob das Feld für Username und Passwor leer sind. 
- * Der User wird authentifziert.
- * Es wird eine Session erstellt. Es wird ein Cookie erstellt - rememberme Funktion
- */
+	/**
+	 * In dieser Methode wird überprüft ob das Feld für Username und Passwort leer
+	 * sind. Ist dies der Fall so funktioniert das Login nicht. Die
+	 * Authentifzierung und das Session-Management (Cookie mit rememberme
+	 * Funktion) werden hier implementiert.
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
 		PrintWriter out = response.getWriter();
@@ -76,10 +73,9 @@ public class OnlinePortal extends HttpServlet {
 			log.info("Login failed Password field is empty");
 			return;
 		}
-		
-		
+
 		boolean rememberMe = false;
-		if (request.getParameter("rememberme") != null );{
+		if (request.getParameter("rememberme") != null) {
 			rememberMe = true;
 			System.out.println("Remember function is active");
 		}
@@ -90,40 +86,59 @@ public class OnlinePortal extends HttpServlet {
 		// authenticating
 		Staff staffmember = d.authenticateUser(user, password.toCharArray());
 
-		// creating session
+		// Session Management
 		String username = staffmember.getUsername();
 		HttpSession session = request.getSession();
 		session.setAttribute("user", username);
 		session.setAttribute("role", staffmember);
-		session.setMaxInactiveInterval(60 * 15);
-		String newRandom="";
-		
-		//Set cookie when rememberme checked
+		// set session to expire in 30 mins
+		session.setMaxInactiveInterval(30 * 60);
+		String newRandom = "";
+
+		// Set cookie when rememberme checked
 		if (rememberMe == true) {
 			PasswordUtil hash = new PasswordUtil();
-		
+
 			try {
 				newRandom = hash.savePassword(passw);
-		
+
 			} catch (NoSuchAlgorithmException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				log.info("Exception - No such Algorithm ");
 			}
+
+			
+			  if (request.getCookies()[0] != null &&
+			  request.getCookies()[0].getValue() != null) {
+			  	String[] value = request.getCookies()[0].getValue().split(";"); 
+			  	
+			  	if (value.length != 2) {
+			 // Set error and return 
+			  	} 
+			  	
+			  	//if (!loginService.mappingExists(value[0],value[1])) { 
+			  		// (username, random) pair is checked // Set error and
+			  //	}
+			  // } else { validated = loginService.isUserValid(username,
+			  //password); if (!validated) { // Set error and return } }
+			 
+
 			Cookie loginCookie = new Cookie("rememberme", username + ":" + newRandom);
+			// setting cookie to expiry in 30 mins
+			loginCookie.setMaxAge(30 * 60);
 			response.addCookie(loginCookie);
-	
+
 		}
 
-		
-		// printing costumers
+		// bei erfolgreicher authentifzierung -> Kunden werden angezeigt
 		if (staffmember != null) {
 			response.sendRedirect("ShowCustomer");
 		} else {
 			response.sendRedirect("loginFailed.html");
 			log.info("Login Failed ");
 		}
-		return;
+		}
 
 	}
 

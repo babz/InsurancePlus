@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Nachfolgend ist der File-Download ersichtlich.
+ * Dieser Code lässt nur Downloads von .txt Files vom Verzeichnis
+ * webapps/2_compliant zu. Der Filename darf nur aus Buchstaben, Zahlen und
+ * Underscore bestehen.
+ * @author christina
+ */
 public class Download extends HttpServlet{
-	/**
-	 * Nachfolgend ist das Compliant Beispiel für den File-Download ersichtlich.
-	 * Dieser Code lässt nur Downloads von .txt Files vom Verzeichnis
-	 * webapps/2_compliant zu. Der Filename darf nur aus Buchstaben, Zahlen und
-	 * Underscore bestehen.
-	 * @author christina
-	 */
+
 	
 	static Logger log = Logger.getLogger(Download.class.getName());
 

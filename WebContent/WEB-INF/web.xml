@@ -77,10 +77,7 @@
 		<servlet-class>fhooeinsuranceplus.Download</servlet-class>
 	</servlet>
 
-	<servlet-mapping>
-		<servlet-name>Download</servlet-name>
-		<url-pattern>/Download</url-pattern>
-	</servlet-mapping>
+
 
 	<servlet>
 		<description>Logout</description>

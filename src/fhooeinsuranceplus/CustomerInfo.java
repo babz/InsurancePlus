@@ -74,8 +74,9 @@ public class CustomerInfo extends HttpServlet {
 
 			out.print(insinfo);
 
-			out.print("<a href =\"Download?id=" + c.getCustromerId()
-			    + "\"> Download Customer Information" + "</a>");
+			//Download as file
+		/*	out.print("<a href =\"Download?id=" + c.getCustromerId()
+			    + "\"> Download Customer Information" + "</a>");*/
 
 		} else {
 			out.print("<b>Please login first!!</b>");

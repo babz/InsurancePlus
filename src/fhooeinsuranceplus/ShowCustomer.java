@@ -1,32 +1,31 @@
 package fhooeinsuranceplus;
 
 import javax.servlet.http.HttpServlet;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+/**
+ * Hier werden die verschiedenen Kunden aufgelistet. Es besteht die Möglichkeit
+ * sich für jeden Kunden mehr Informatinen anzeigen zu lassen.
+ * 
+ * @author christina
+ */
 public class ShowCustomer extends HttpServlet {
 
-	/**
-	 * Hier werden die verschiedenen Kunden aufgelistet. Es besteht die
-	 * Möglichkeit sich für jeden Kunden mehr Informatinen anzeigen zu lassen.
-	 * 
-	 * @author christina
-	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Von jedem Kunden werden die ID und der Vor- und Nachname ausgegeben. Neben jedem Namen gibts es 
-	 * einen Link für mehr Informationen zu dem jeweiligen Kunden.
+	 * Von jedem Kunden werden die ID und der Vor- und Nachname ausgegeben. Neben
+	 * jedem Namen gibts es einen Link für mehr Informationen zu dem jeweiligen
+	 * Kunden.
 	 * 
-	 * Will ein nicht eingeloggter User die Kunden ansehen, so wird er auf die Login-Seite umgeleitet.
+	 * Will ein nicht eingeloggter User die Kunden ansehen, so wird er auf die
+	 * Login-Seite umgeleitet.
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
