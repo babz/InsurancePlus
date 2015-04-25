@@ -14,21 +14,25 @@ import org.apache.log4j.Logger;
 public class CustomerInfo extends HttpServlet {
 
 	/**
-	 * Kundeninformationen werden ausgelesen
+	 * Get detailed Customer Information 
 	 * 
 	 * @author christina, lukas
 	 */
 	private static final long serialVersionUID = 1L;
 	static Logger log = Logger.getLogger(CustomerInfo.class.getName());
 
+	/**
+	 * Check if the session is valid;
+	 * When valid -> then try to get the customer id -> 
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		request.getRequestDispatcher("link.html").include(request, response);
 		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\"></link>");
-
 		out.println("<div class=\"main-card\">");
+		
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 

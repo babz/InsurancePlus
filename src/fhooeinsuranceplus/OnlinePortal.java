@@ -86,61 +86,60 @@ public class OnlinePortal extends HttpServlet {
 		// authenticating
 		Staff staffmember = d.authenticateUser(user, password.toCharArray());
 
-		// Session Management
-		String username = staffmember.getUsername();
-		HttpSession session = request.getSession();
-		session.setAttribute("user", username);
-		session.setAttribute("role", staffmember);
-		// set session to expire in 30 mins
-		session.setMaxInactiveInterval(30 * 60);
-		String newRandom = "";
-
-		// Set cookie when rememberme checked
-		if (rememberMe == true) {
-			PasswordUtil hash = new PasswordUtil();
-
-			try {
-				newRandom = hash.savePassword(passw);
-
-			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				log.info("Exception - No such Algorithm ");
-			}
-
-			
-			  if (request.getCookies()[0] != null &&
-			  request.getCookies()[0].getValue() != null) {
-			  	String[] value = request.getCookies()[0].getValue().split(";"); 
-			  	
-			  	if (value.length != 2) {
-			 // Set error and return 
-			  	} 
-			  	
-			  	//if (!loginService.mappingExists(value[0],value[1])) { 
-			  		// (username, random) pair is checked // Set error and
-			  //	}
-			  // } else { validated = loginService.isUserValid(username,
-			  //password); if (!validated) { // Set error and return } }
-			 
-
-			Cookie loginCookie = new Cookie("rememberme", username + ":" + newRandom);
-			// setting cookie to expiry in 30 mins
-			loginCookie.setMaxAge(30 * 60);
-			response.addCookie(loginCookie);
-
-		}
-
-		// bei erfolgreicher authentifzierung -> Kunden werden angezeigt
+	// authenticate successfull -> session creation; customer view
 		if (staffmember != null) {
-			response.sendRedirect("ShowCustomer");
-		} else {
-			response.sendRedirect("loginFailed.html");
-			log.info("Login Failed ");
-		}
+			// Session Management
+			String username = staffmember.getUsername();
+			HttpSession session = request.getSession();
+			session.setAttribute("user", username);
+			session.setAttribute("role", staffmember);
+			// set session to expire in 30 mins
+			session.setMaxInactiveInterval(30 * 60);
+			String newRandom = "";
+
+			// Set cookie when rememberme checked
+			if (rememberMe == true) {
+				PasswordUtil hash = new PasswordUtil();
+
+				try {
+					newRandom = hash.savePassword(passw);
+
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					log.info("Exception - No such Algorithm ");
+				}
+
+				if (request.getCookies()[0] != null
+				    && request.getCookies()[0].getValue() != null) {
+					String[] value = request.getCookies()[0].getValue().split(";");
+
+					//if (value.length != 2) {
+						// Set error and return
+					//}
+
+					// if (!loginService.mappingExists(value[0],value[1])) {
+					// (username, random) pair is checked // Set error and
+					// }
+					// } else { validated = loginService.isUserValid(username,
+					// password); if (!validated) { // Set error and return } }
+
+					Cookie loginCookie = new Cookie("rememberme", username + ":"
+					    + newRandom);
+					// setting cookie to expiry in 30 mins
+					loginCookie.setMaxAge(30 * 60);
+					response.addCookie(loginCookie);
+
+				}
+				response.sendRedirect("ShowCustomer");
+			}
+			} else {
+				response.sendRedirect("loginFailed.html");
+				log.info("Login Failed ");
+			}
 		}
 
-	}
+	
 
 	public void destroy() {
 		// do nothing.
