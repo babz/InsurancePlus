@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * In this class the agent can have a look at his/her profile.
+ * Through this implementation the agent can have a look at his/her profile.
  * 
  * @author christina
  * 
@@ -19,7 +19,9 @@ public class ProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Provides user information
+	 * Provides user information for the agent, admin and the controller, only if the session is valid. 
+	 * The information can be extended in further implementations.
+	 * Isn't the session valid the user is encouraged to log in.
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {

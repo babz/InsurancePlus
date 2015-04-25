@@ -10,8 +10,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 /**
- * Hier werden die verschiedenen Kunden aufgelistet. Es besteht die Möglichkeit
- * sich für jeden Kunden mehr Informatinen anzeigen zu lassen.
+ * Implementation of this class provices a list of customers. For each customer
+ * you can click on a link to see more informations.
  * 
  * @author christina
  */
@@ -20,12 +20,10 @@ public class ShowCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Von jedem Kunden werden die ID und der Vor- und Nachname ausgegeben. Neben
-	 * jedem Namen gibts es einen Link für mehr Informationen zu dem jeweiligen
-	 * Kunden.
-	 * 
-	 * Will ein nicht eingeloggter User die Kunden ansehen, so wird er auf die
-	 * Login-Seite umgeleitet.
+	 * The ID and the pre- and surname from each customers are printed out. Beside
+	 * there is a link for each customer where you can get more information about
+	 * the customer. Is the session not valid, then the user is encouraged to log
+	 * in.
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
@@ -37,6 +35,8 @@ public class ShowCustomer extends HttpServlet {
 		out.println("<div class=\"main-card\">");
 
 		HttpSession session = request.getSession(false);
+		
+		// does a session exists
 		if (session != null) {
 			String name = (String) session.getAttribute("user");
 			String html = "";
@@ -49,6 +49,7 @@ public class ShowCustomer extends HttpServlet {
 			CustomerDatabase dt = new CustomerDatabase();
 			Staff s = (Staff) session.getAttribute("role");
 
+			// customers get listed
 			List<Customer> customerlist = dt.getListOfCustomers(s);
 			for (Customer c : customerlist) {
 
