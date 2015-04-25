@@ -13,10 +13,9 @@ import org.apache.log4j.Logger;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * In dieser Klasse werden folgende Funktionalitäten implementiert: --
- * Login-Funktionalität; - Authentifizierung; wenn login korrekt ->
- * weiterleitung zur ShowCustomer.java, wo die Customer des Agent's aufgelistet
- * werden. -- Logging Funktionalität
+ * In this class the following functionalitites get implemented: -- Login; --
+ * Authentication; when login correct -> then redirect to ShowCustomer.java ->
+ * all customers are listed; -- Logging
  */
 public class OnlinePortal extends HttpServlet {
 
@@ -25,7 +24,7 @@ public class OnlinePortal extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Initialisierung der User- und Customerdatenbank
+	 * Initialisation: User and customerdatabase
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -44,10 +43,13 @@ public class OnlinePortal extends HttpServlet {
 	}
 
 	/**
-	 * In dieser Methode wird überprüft ob das Feld für Username und Passwort leer
-	 * sind. Ist dies der Fall so funktioniert das Login nicht. Die
-	 * Authentifzierung und das Session-Management (Cookie mit rememberme
-	 * Funktion) werden hier implementiert.
+	 * In this method there is a check if the field for username or password are
+	 * empty Is this the case then the user is encouraged to log in again
+	 * Implementation of the Authentication process: Is the password incorrect - >
+	 * then the user is also encouraged to log in again. Was the authentication
+	 * process successful the variable staffmember isn't null and session is
+	 * created -> implementation of session management The user is forwarded to a
+	 * page with the list of customers
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws IOException, ServletException {
@@ -57,10 +59,12 @@ public class OnlinePortal extends HttpServlet {
 		// set page color
 		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\">");
 
+		// get user and password
 		String user = request.getParameter("user");
 		String password = request.getParameter("password");
 		char[] passw = request.getParameter("password").toCharArray();
 
+		// check if fields are empty
 		if (user == null || user.equals("")) {
 			System.out.println("Username field is empty");
 			response.sendRedirect("loginFailed.html");
@@ -74,6 +78,7 @@ public class OnlinePortal extends HttpServlet {
 			return;
 		}
 
+		// set rememberMe
 		boolean rememberMe = false;
 		if (request.getParameter("rememberme") != null) {
 			rememberMe = true;
@@ -86,7 +91,7 @@ public class OnlinePortal extends HttpServlet {
 		// authenticating
 		Staff staffmember = d.authenticateUser(user, password.toCharArray());
 
-	// authenticate successfull -> session creation; customer view
+		// authenticate successful -> session creation; customer view
 		if (staffmember != null) {
 			// Session Management
 			String username = staffmember.getUsername();
@@ -114,9 +119,9 @@ public class OnlinePortal extends HttpServlet {
 				    && request.getCookies()[0].getValue() != null) {
 					String[] value = request.getCookies()[0].getValue().split(";");
 
-					//if (value.length != 2) {
-						// Set error and return
-					//}
+					// if (value.length != 2) {
+					// Set error and return
+					// }
 
 					// if (!loginService.mappingExists(value[0],value[1])) {
 					// (username, random) pair is checked // Set error and
@@ -124,22 +129,21 @@ public class OnlinePortal extends HttpServlet {
 					// } else { validated = loginService.isUserValid(username,
 					// password); if (!validated) { // Set error and return } }
 
+					// create cookie
 					Cookie loginCookie = new Cookie("rememberme", username + ":"
 					    + newRandom);
 					// setting cookie to expiry in 30 mins
 					loginCookie.setMaxAge(30 * 60);
 					response.addCookie(loginCookie);
-
 				}
+				// list of customers
 				response.sendRedirect("ShowCustomer");
 			}
-			} else {
-				response.sendRedirect("loginFailed.html");
-				log.info("Login Failed ");
-			}
+		} else {
+			response.sendRedirect("loginFailed.html");
+			log.info("Login Failed ");
 		}
-
-	
+	}
 
 	public void destroy() {
 		// do nothing.

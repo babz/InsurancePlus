@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 public class CustomerInfo extends HttpServlet {
 
 	/**
-	 * Get detailed Customer Information 
+	 * Get detailed Customer Information
 	 * 
 	 * @author christina, lukas
 	 */
@@ -23,7 +23,10 @@ public class CustomerInfo extends HttpServlet {
 
 	/**
 	 * Check if the session is valid;
+	 * When not valid, the user is encouraged to log in again.
 	 * When valid -> then try to get the customer id -> 
+	 * when there is no id the program is returned, 
+	 * when there is a valid id, the customer information is printed out
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -32,7 +35,7 @@ public class CustomerInfo extends HttpServlet {
 		request.getRequestDispatcher("link.html").include(request, response);
 		out.println(" <link rel=\"stylesheet\" href=\"css/style.css\"></link>");
 		out.println("<div class=\"main-card\">");
-		
+
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 
@@ -69,7 +72,7 @@ public class CustomerInfo extends HttpServlet {
 
 			String name = (String) session.getAttribute("user");
 
-			out.print("Hello, " + name);
+			out.print("Hello " + name + "!");
 
 			String insinfo = "<p>Firstname: " + c.getFirstName() + "</p>";
 			insinfo += "<p>Surname: " + c.getSurname() + "</p>";
@@ -78,9 +81,11 @@ public class CustomerInfo extends HttpServlet {
 
 			out.print(insinfo);
 
-			//Download as file
-		/*	out.print("<a href =\"Download?id=" + c.getCustromerId()
-			    + "\"> Download Customer Information" + "</a>");*/
+			// Download as file
+			/*
+			 * out.print("<a href =\"Download?id=" + c.getCustromerId() +
+			 * "\"> Download Customer Information" + "</a>");
+			 */
 
 		} else {
 			out.print("<b>Please login first!!</b>");

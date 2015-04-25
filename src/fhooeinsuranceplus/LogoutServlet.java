@@ -12,14 +12,15 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 	/**
 	 * This class serves as logout servlet. Print the message that the user is
-	 * logged out and invalidate the session.
+	 * logged out successfully and invalidate the session.
 	 * 
 	 * @author christina
 	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Die Sesseion wird invalidiert und die Meldung Your are "successfully logged out" wird angezeigt
+	 * The session will be invalidated and the successfully logged out message
+	 * will be printed
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
