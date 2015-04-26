@@ -119,16 +119,6 @@ public class OnlinePortal extends HttpServlet {
 				    && request.getCookies()[0].getValue() != null) {
 					String[] value = request.getCookies()[0].getValue().split(";");
 
-					// if (value.length != 2) {
-					// Set error and return
-					// }
-
-					// if (!loginService.mappingExists(value[0],value[1])) {
-					// (username, random) pair is checked // Set error and
-					// }
-					// } else { validated = loginService.isUserValid(username,
-					// password); if (!validated) { // Set error and return } }
-
 					// create cookie
 					Cookie loginCookie = new Cookie("rememberme", username + ":"
 					    + newRandom);
