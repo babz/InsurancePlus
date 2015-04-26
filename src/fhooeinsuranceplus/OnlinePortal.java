@@ -146,7 +146,7 @@ public class OnlinePortal extends HttpServlet {
 	}
 
 	public void destroy() {
-		// do nothing.
+		super.destroy();
 	}
 
 }
