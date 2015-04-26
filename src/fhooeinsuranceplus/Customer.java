@@ -17,6 +17,7 @@ public class Customer implements java.io.Serializable {
 	private String firstName;
 	private String surname;
 	private long insuranceSum;
+	private double income;
 	
 	/**
 	 * @return the firstName
@@ -66,6 +67,18 @@ public class Customer implements java.io.Serializable {
 	 */
 	public void setCustromerId(int custromerId) {
 		this.custromerId = custromerId;
+	}
+	/**
+	 * @return the income
+	 */
+	public double getIncome() {
+		return income;
+	}
+	/**
+	 * @param income the income to set
+	 */
+	public void setIncome(double income) {
+		this.income = income;
 	}
 	
 

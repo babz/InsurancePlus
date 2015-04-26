@@ -70,6 +70,7 @@ public class CustomerDatabase {
 		c1.setFirstName("Hans");
 		c1.setSurname("Huber");
 		c1.setInsuranceSum(1000);
+		c1.setIncome(200.60);
 		listOfCustomers.add(c1);
 		
 		Customer c2 = new Customer();
@@ -77,6 +78,7 @@ public class CustomerDatabase {
 		c2.setFirstName("Heidi");
 		c2.setSurname("Meier");
 		c2.setInsuranceSum(7450);
+		c2.setIncome(4300);
 		listOfCustomers.add(c2);
 		
 		Customer c3 = new Customer();
@@ -84,6 +86,7 @@ public class CustomerDatabase {
 		c3.setFirstName("Johannes");
 		c3.setSurname("Hotz-Plotz");
 		c3.setInsuranceSum(15);
+		c3.setIncome(0);
 		listOfCustomers.add(c3);
 		
 		Customer c4 = new Customer();
@@ -91,6 +94,7 @@ public class CustomerDatabase {
 		c4.setFirstName("DDr. Jörg");
 		c4.setSurname("Gemeinreich");
 		c4.setInsuranceSum(1200000);
+		c4.setIncome(98765.43);
 		listOfCustomers.add(c4);
 
 		System.out.println(listOfCustomers.size() + " sample entries created");

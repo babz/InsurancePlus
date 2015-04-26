@@ -79,6 +79,12 @@ public class CustomerInfo extends HttpServlet {
 			insinfo += "<p>Insurance Sum: " + c.getInsuranceSum() + "</p>";
 			insinfo += "<p>ID: " + c.getCustromerId() + "</p>";
 
+			Staff s = (Staff) session.getAttribute("role");
+			if (s.getRole() == StaffRole.AGENT || s.getRole() == StaffRole.ADMIN) {
+
+				insinfo += "<p>Ioncome <i>(not visible for Controller)</i>: " + c.getIncome() + "</p>";
+			}
+			
 			out.print(insinfo);
 
 			// Download as file
